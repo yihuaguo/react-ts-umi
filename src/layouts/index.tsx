@@ -1,4 +1,4 @@
-import { getAddress, getChain } from '@/utils/web3';
+import { getAddress, getChain } from '@/web3/index';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { getChainName } from '@/utils/utils';
 import { connect } from 'umi';

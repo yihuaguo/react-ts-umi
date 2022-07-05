@@ -6,7 +6,7 @@ import {
   changeChain,
   getEth,
   approve,
-} from '@/utils/web3';
+} from '@/web3/index';
 import React from 'react';
 
 const Home: React.FC = (props: any) => {
