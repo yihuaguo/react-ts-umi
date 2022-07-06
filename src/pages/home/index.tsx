@@ -8,6 +8,7 @@ import {
   approve,
 } from '@/web3/index';
 import React from 'react';
+import { getUsers } from '@/services/test';
 
 const Home: React.FC = (props: any) => {
   console.log('props', props);
@@ -46,6 +47,14 @@ const Home: React.FC = (props: any) => {
         获取账户余额
       </Button>
       <Button onClick={approve}>获取签名</Button>
+      <hr />
+      <Button
+        onClick={() => {
+          getUsers();
+        }}
+      >
+        接口测试
+      </Button>
     </Space>
   );
 };

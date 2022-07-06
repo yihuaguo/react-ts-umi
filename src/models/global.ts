@@ -1,7 +1,17 @@
 import { getUsers } from '@/services/test';
 import storage from '@/utils/storage';
 
-export default {
+interface Globa extends ModalInit {
+  state: {
+    list: [];
+    userInfo: {
+      address: string;
+      chain: string;
+    };
+  };
+}
+
+const global: Globa = {
   namespace: 'global',
   state: {
     list: [],
@@ -12,14 +22,14 @@ export default {
     },
   },
   effects: {
-    *userInfo({ payload = {} }, { put }: any) {
+    *userInfo({ payload = {} }, { put }) {
       storage.save('userInfo', payload);
       yield put({
         type: 'setUserInfo',
         payload: payload || {},
       });
     },
-    // *setList({ payload = {} }, { call, put }: any): any {
+    // *setList({ payload = {} }, { call, put }) {
     //     const response = yield call(getUsers, payload)
     //     console.log('response', response)
     //     yield put({
@@ -29,7 +39,7 @@ export default {
     // },
   },
   reducers: {
-    setUserInfo(state: any, action: any) {
+    setUserInfo(state, action) {
       return {
         ...state,
         userInfo: action.payload,
@@ -37,7 +47,7 @@ export default {
     },
     // // state为之前的state所有数据
     // // action为put的数据，取payload
-    // addList(state: any, action: any) {
+    // addList(state, action) {
     //     return {
     //         ...state,
     //         list: action.payload,
@@ -45,3 +55,5 @@ export default {
     // },
   },
 };
+
+export default global;
