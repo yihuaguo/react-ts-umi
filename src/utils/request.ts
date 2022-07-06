@@ -44,8 +44,8 @@ orgRequest.interceptors.response.use(
 );
 
 const request: Request = (
-  method: string,
-  url: string,
+  method,
+  url,
   params = {
     query: undefined,
     data: undefined,
