@@ -7,6 +7,8 @@ import {
   ResponseInterceptor,
 } from 'umi-request';
 
+const { NODE_ENV } = process.env;
+
 interface Request {
   (
     method: 'GET' | 'POST' | 'PUT' | 'DELETE',
@@ -50,6 +52,7 @@ const request: Request = (
   },
 ) => {
   const { query, data } = params;
+  url = NODE_ENV === 'development' ? url : `${'http://www.test.com'}${url}`;
   // @ts-ignore
   return orgRequest(url, {
     method,

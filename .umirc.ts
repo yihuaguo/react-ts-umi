@@ -1,5 +1,7 @@
 import { defineConfig } from 'umi';
 
+const { DEVAPI, NODE_ENV } = process.env;
+
 export default defineConfig({
   publicPath: '/',
   hash: true,
@@ -10,6 +12,16 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  proxy:
+    NODE_ENV === 'development'
+      ? {
+          '/api': {
+            target: DEVAPI,
+            changeOrigin: true,
+            pathRewrite: { '^/api': '/api' },
+          },
+        }
+      : {},
   routes: [
     {
       path: '/',

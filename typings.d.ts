@@ -7,6 +7,7 @@ declare module '*.gif';
 declare module '*.bmp';
 declare module '*.tiff';
 declare module 'react-lazyload';
+declare module 'nprogress';
 declare module '*.svg' {
   export function ReactComponent(
     props: React.SVGProps<SVGSVGElement>,

@@ -5,8 +5,8 @@ interface Globa extends ModalInit {
   state: {
     list: [];
     userInfo: {
-      address: string;
-      chain: string;
+      address: string | undefined;
+      chain: string | undefined;
     };
   };
 }
@@ -17,8 +17,8 @@ const global: Globa = {
     list: [],
     // 账户信息
     userInfo: {
-      address: '', // 账户地址
-      chain: '', // 当前链
+      address: undefined, // 账户地址
+      chain: undefined, // 当前链
     },
   },
   effects: {

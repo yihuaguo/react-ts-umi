@@ -23,7 +23,7 @@ const Layout = ({ userInfo, dispatch, children }: Props) => {
   ) => {
     const address = originAddress || window.ethereum.selectedAddress;
     if (!address) return;
-    const chain = originalChain || getChainName(await getChain()) || '未知链名';
+    const chain = originalChain || getChainName(await getChain());
     const payload = { address, chain };
     dispatch({
       type: 'global/setUserInfo',
@@ -71,9 +71,9 @@ const Layout = ({ userInfo, dispatch, children }: Props) => {
     <>
       <header className={styles.header}>
         <button onClick={connect}>
-          {isConnect ? userInfo.address : 'connect'}
+          {isConnect ? userInfo.address || '' : 'connect'}
         </button>
-        <p>{userInfo.chain}</p>
+        <p>{userInfo.chain || ''}</p>
       </header>
       {
         //  传递数据给子路由
